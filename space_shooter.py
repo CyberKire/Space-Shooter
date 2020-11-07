@@ -15,7 +15,8 @@ def run_game():
 
     #Main loop of the game
     while True:
-        gf.check_events()  #Used to check buttons/mouse pressed
+        gf.check_events(ship)  #Used to check buttons/mouse pressed
+        ship.update()  #Updates the position of the ship depending on the button pressed
         gf.update_screen(game_settings,screen,ship) #Update images on the screen and flip to the new screen
 
 run_game()
