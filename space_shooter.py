@@ -1,5 +1,5 @@
 import pygame  #Contains the functionality needed to make a game
-
+from pygame.sprite import Group
 from settings import Settings
 from ship import Ship
 import game_functions as gf
@@ -13,10 +13,14 @@ def run_game():
     # Making the ship of the game
     ship=Ship(game_settings,screen)
 
+    #Make a group to store bullets in
+    bullets=Group()
+
     #Main loop of the game
     while True:
-        gf.check_events(ship)  #Used to check buttons/mouse pressed
+        gf.check_events(game_settings,screen,ship,bullets)  #Used to check buttons/mouse pressed
         ship.update()  #Updates the position of the ship depending on the button pressed
-        gf.update_screen(game_settings,screen,ship) #Update images on the screen and flip to the new screen
+        bullets.update()
+        gf.update_screen(game_settings,screen,ship,bullets) #Update images on the screen and flip to the new screen
 
 run_game()
