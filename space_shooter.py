@@ -20,15 +20,7 @@ def run_game():
     while True:
         gf.check_events(game_settings,screen,ship,bullets)  #Used to check buttons/mouse pressed
         ship.update()  #Updates the position of the ship depending on the button pressed
-        bullets.update()
-
-        #Get rid of bullets that have disappeared.
-        for bullet in bullets.copy():
-            if bullet.rect.bottom <= 0:
-                bullets.remove(bullet)
-
-        #print(len(bullets))  #Display the number of bullets in the game in the terminal but will comment it out.
-
+        gf.update_bullets(bullets) #Deleting the bullets that go off screen
         gf.update_screen(game_settings,screen,ship,bullets) #Update images on the screen and flip to the new screen
 
 run_game()
